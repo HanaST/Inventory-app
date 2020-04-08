@@ -1,7 +1,9 @@
 package com.teapink.ocr_reader.activities;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -65,27 +67,59 @@ public class MainActivity extends AppCompatActivity {
                     android.content.ClipData clip = android.content.ClipData.newPlainText("Copied Text", textValue.getText().toString());
                     clipboard.setPrimaryClip(clip);
                     Toast.makeText(getApplicationContext(), R.string.clipboard_copy_successful_message, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), clip.toString(), Toast.LENGTH_SHORT).show();
+                    //go to the other activity
+//                    Intent intent = new Intent(MainActivity.this, com.teapink.ocr_reader.view.MainActivity.class);
+//                    startActivity(intent);
+
+                    //Intent intent = new Intent(getApplicationContext(), com.teapink.ocr_reader.view.MainActivity.class);
+                    //intent.putExtra(OcrCaptureActivity.AutoFocus, true);
+                   // intent.putExtra(OcrCaptureActivity.UseFlash, useFlash.isChecked());
+
+                    //startActivity(intent);
+
+                    Intent t;
+                    PackageManager manager = getPackageManager();
+
+                    t= manager.getLaunchIntentForPackage("info.androidhive.sqlite");
+                    if (t != null) {
+                        //Toast.makeText(getApplicationContext(), "opening other app", Toast.LENGTH_SHORT).show();
+                        t.addFlags((Intent.FLAG_ACTIVITY_NEW_TASK));
+                        //t.addCategory(Intent.CATEGORY_LAUNCHER);
+                        t.setAction(Intent.ACTION_SEND);
+                        t.putExtra("EXTRA_TEXT", "hdfhdhjfgjf");
+                        t.setType("text/plain");
+                        startActivity(t);
+                    }else{
+                        Toast.makeText(getApplicationContext(), "not opening other app", Toast.LENGTH_SHORT).show();
+                        t= new Intent(Intent.ACTION_VIEW);
+                        t.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(t);
+//                            Toast.makeText(getApplicationContext(),
+//                                    R.string.no_email_client_error, Toast.LENGTH_SHORT).show();
+                    }
+
                 }
-                Toast.makeText(getApplicationContext(), textValue.getText().toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), textValue.getText().toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        mailTextButton = (Button) findViewById(R.id.mail_text_button);
-        mailTextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_SUBJECT, "Text Read");
-                i.putExtra(Intent.EXTRA_TEXT, textValue.getText().toString());
-                try {
-                    startActivity(Intent.createChooser(i, getString(R.string.mail_intent_chooser_text)));
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getApplicationContext(),
-                            R.string.no_email_client_error, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+       mailTextButton = (Button) findViewById(R.id.mail_text_button);
+//        mailTextButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(Intent.ACTION_SEND);
+//                i.setType("message/rfc822");
+//                i.putExtra(Intent.EXTRA_SUBJECT, "Text Read");
+//                i.putExtra(Intent.EXTRA_TEXT, textValue.getText().toString());
+//                try {
+//                    startActivity(Intent.createChooser(i, getString(R.string.mail_intent_chooser_text)));
+//                } catch (android.content.ActivityNotFoundException ex) {
+//                    Toast.makeText(getApplicationContext(),
+//                            R.string.no_email_client_error, Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
     }
 
     @Override
