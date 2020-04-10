@@ -105,21 +105,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
        mailTextButton = (Button) findViewById(R.id.mail_text_button);
-//        mailTextButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(Intent.ACTION_SEND);
-//                i.setType("message/rfc822");
-//                i.putExtra(Intent.EXTRA_SUBJECT, "Text Read");
-//                i.putExtra(Intent.EXTRA_TEXT, textValue.getText().toString());
-//                try {
-//                    startActivity(Intent.createChooser(i, getString(R.string.mail_intent_chooser_text)));
-//                } catch (android.content.ActivityNotFoundException ex) {
-//                    Toast.makeText(getApplicationContext(),
-//                            R.string.no_email_client_error, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+        mailTextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_SEND);
+               // i.setType("message/rfc822");
+               // i.putExtra(Intent.EXTRA_SUBJECT, "Text Read");
+                //i.putExtra(Intent.EXTRA_TEXT, textValue.getText().toString());
+                try {
+                    Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+                    startActivity(intent);
+
+                    //startActivity(Intent.createChooser(i, getString(R.string.mail_intent_chooser_text)));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getApplicationContext(),
+                            R.string.no_email_client_error, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
