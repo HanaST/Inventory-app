@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">Excellerent Inventory</string>
+    <string name="ok">OK</string>
+    <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
+    <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
+    <string name="low_storage_error">Ocr dependencies cannot be downloaded due to low device storage</string>
+    <string name="ocr_header">Click &quot;Detect Serial Number" to detect text</string>
+    <string name="read_text">Detect Serial Number</string>
+    <string name="auto_focus">Auto Focus</string>
+    <string name="use_flash">Use Flash</string>
+    <string name="ocr_success">Text read successfully</string>
+    <string name="ocr_failure">No text captured</string>
+    <string name="ocr_error">"Error reading text: %1$s"</string>
+    <string name="send_email_text">Capture Logo</string>
+    <string name="mail_intent_chooser_text">Send mail...</string>
+    <string name="no_email_client_error">There are no email clients installed.</string>
+    <string name="copy_text">Save to Database</string>
+    <string name="clipboard_copy_successful_message">Copied to clipboard.</string>
+
+
+    <string name="action_settings">Settings</string>
+    <string name="activity_title_home">Notes</string>
+    <string name="msg_no_notes">No notes found!</string>
+    <string name="lbl_new_note_title">New Note</string>
+    <string name="lbl_edit_note_title">Edit Note</string>
+    <string name="hint_enter_note">Enter your note!</string>
+
+
+
+    <string name="start_camera">Start Camera</string>
+    <string name="imageview">imageView</string>
+
+    <string name="delete_success">Images was deleted!</string>
+    <string name="delete_failure">Image deletion failed</string>
+    <string name="saved_message">Image Saved at %1$s</string>
+    <string name="not_saved">Image not saved!</string>
+    <string name="error">Error finding image</string>
+    <string name="go">GO</string>
+    <string name="permission_denied">Permission denied</string>
+    <string name="imageview_description">The imageview that contains the emojified picture</string>
+</resources>
